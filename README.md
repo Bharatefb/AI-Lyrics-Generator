@@ -1,3 +1,5 @@
+# AI-Lyrics-Generator
+
 What I Built
 
 I built AI Lyrics Generator, a local AI-powered web application that helps a friend turn an idea, topic, or feeling into an original song.
@@ -28,8 +30,7 @@ Demo
 
 The application can be run locally with Ollama, so users don't need a cloud AI API to generate lyrics.
 
-Code
-GitHub Repository
+Code GitHub Repository
 
 AI-Lyrics-Generator
 
@@ -37,48 +38,7 @@ https://github.com/Bharatefb/AI-Lyrics-Generator
 
 The repository contains the complete frontend, FastAPI backend, prompt logic, and setup instructions.
 
-Project Architecture
-┌─────────────────────┐
-│ Browser │
-│ │
-│ Song / Topic │
-│ Genre │
-│ Mood │
-│ Language │
-│ Verse Count │
-└──────────┬──────────┘
-│
-HTTP POST
-│
-▼
-┌─────────────────────┐
-│ FastAPI │
-│ │
-│ /generate │
-└──────────┬──────────┘
-│
-▼
-┌─────────────────────┐
-│ Ollama │
-│ │
-│ qwen2.5-coder:3b │
-└──────────┬──────────┘
-│
-▼
-┌─────────────────────┐
-│ Generated Lyrics │
-└──────────┬──────────┘
-│
-▼
-┌─────────────────────┐
-│ Browser │
-│ │
-│ [Verse 1] │
-│ [Chorus] │
-│ [Verse 2] │
-│ [Bridge] │
-│ [Final Chorus] │
-└─────────────────────┘
+Project Architecture ┌─────────────────────┐ │ Browser │ │ │ │ Song / Topic │ │ Genre │ │ Mood │ │ Language │ │ Verse Count │ └──────────┬──────────┘ │ HTTP POST │ ▼ ┌─────────────────────┐ │ FastAPI │ │ │ │ /generate │ └──────────┬──────────┘ │ ▼ ┌─────────────────────┐ │ Ollama │ │ │ │ qwen2.5-coder:3b │ └──────────┬──────────┘ │ ▼ ┌─────────────────────┐ │ Generated Lyrics │ └──────────┬──────────┘ │ ▼ ┌─────────────────────┐ │ Browser │ │ │ │ [Verse 1] │ │ [Chorus] │ │ [Verse 2] │ │ [Bridge] │ │ [Final Chorus] │ └─────────────────────┘
 
 How I Built It
 
@@ -114,19 +74,7 @@ The frontend sends the user's song requirements to the FastAPI /generate endpoin
 
 FastAPI then builds a structured prompt and sends it to the local Ollama API.
 
-Browser
-↓
-POST /generate
-↓
-FastAPI
-↓
-Ollama
-↓
-qwen2.5-coder:3b
-↓
-Generated lyrics
-↓
-Browser
+Browser ↓ POST /generate ↓ FastAPI ↓ Ollama ↓ qwen2.5-coder:3b ↓ Generated lyrics ↓ Browser
 
 Frontend
 
@@ -148,11 +96,7 @@ Write a song about summer.
 
 the application provides structured information:
 
-Song/topic: Summer Love
-Genre: Pop
-Mood: Happy
-Language: English
-Number of verses: 3
+Song/topic: Summer Love Genre: Pop Mood: Happy Language: English Number of verses: 3
 
 The model is instructed to create completely original lyrics and organize them into a recognizable song structure.
 
