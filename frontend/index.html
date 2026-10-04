@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Lyrics Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <!-- Header -->
+
+        <header>
+
+            <div class="logo">
+                🎵
+            </div>
+
+            <h1>
+                AI Lyrics Generator
+            </h1>
+
+            <p>
+                Create original songs using local AI
+            </p>
+
+        </header>
+
+
+        <!-- Generator Card -->
+
+        <main class="generator-card">
+
+
+            <!-- Song Name -->
+
+            <div class="form-group">
+
+                <label for="songName">
+                    Song Name / Topic
+                </label>
+
+                <input
+                    id="songName"
+                    type="text"
+                    placeholder="Example: Pehli Baarish"
+                >
+
+            </div>
+
+
+            <!-- Genre -->
+
+            <div class="form-group">
+
+                <label for="genre">
+                    Genre
+                </label>
+
+                <select id="genre">
+
+                    <option value="Pop">
+                        Pop
+                    </option>
+
+                    <option value="Hindi Pop">
+                        Hindi Pop
+                    </option>
+
+                    <option value="Bollywood">
+                        Bollywood
+                    </option>
+
+                    <option value="Rock">
+                        Rock
+                    </option>
+
+                    <option value="Hip Hop">
+                        Hip Hop
+                    </option>
+
+                    <option value="R&B">
+                        R&B
+                    </option>
+
+                    <option value="Lo-fi">
+                        Lo-fi
+                    </option>
+
+                    <option value="EDM">
+                        EDM
+                    </option>
+
+                    <option value="Country">
+                        Country
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Mood -->
+
+            <div class="form-group">
+
+                <label for="mood">
+                    Mood
+                </label>
+
+                <select id="mood">
+
+                    <option value="Happy">
+                        Happy
+                    </option>
+
+                    <option value="Romantic">
+                        Romantic
+                    </option>
+
+                    <option value="Sad">
+                        Sad
+                    </option>
+
+                    <option value="Emotional">
+                        Emotional
+                    </option>
+
+                    <option value="Motivational">
+                        Motivational
+                    </option>
+
+                    <option value="Melancholic">
+                        Melancholic
+                    </option>
+
+                    <option value="Energetic">
+                        Energetic
+                    </option>
+
+                    <option value="Peaceful">
+                        Peaceful
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Language -->
+
+            <div class="form-group">
+
+                <label for="language">
+                    Language
+                </label>
+
+                <select id="language">
+
+                    <option value="English">
+                        🇬🇧 English
+                    </option>
+
+                    <option value="Hindi">
+                        🇮🇳 Hindi (हिन्दी)
+                    </option>
+
+                    <option value="Hinglish">
+                        🇮🇳 Hinglish
+                    </option>
+
+                    <option value="Spanish">
+                        🇪🇸 Spanish
+                    </option>
+
+                    <option value="French">
+                        🇫🇷 French
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Number of Verses -->
+
+            <div class="form-group">
+
+                <label for="verses">
+                    Number of Verses
+                </label>
+
+                <input
+                    id="verses"
+                    type="number"
+                    min="1"
+                    max="8"
+                    value="3"
+                >
+
+            </div>
+
+
+            <!-- Generate Button -->
+
+            <button
+                id="generateButton"
+                onclick="generateLyrics()"
+            >
+
+                <span id="buttonText">
+                    🎵 Generate Lyrics
+                </span>
+
+                <span
+                    id="buttonLoader"
+                    class="button-loader"
+                >
+                    Generating...
+                </span>
+
+            </button>
+
+
+        </main>
+
+
+        <!-- Loading -->
+
+        <div
+            id="loading"
+            class="loading"
+        >
+
+            <div class="spinner"></div>
+
+            <p>
+                Qwen is writing your song...
+            </p>
+
+            <small>
+                This may take a few seconds.
+            </small>
+
+        </div>
+
+
+        <!-- Result -->
+
+        <section
+            id="result"
+            class="result"
+        >
+
+
+            <div class="result-header">
+
+                <div>
+
+                    <span class="result-label">
+                        GENERATED SONG
+                    </span>
+
+                    <h2 id="resultTitle">
+                    </h2>
+
+                </div>
+
+
+                <div class="result-actions">
+
+                    <button
+                        class="secondary-button"
+                        onclick="copyLyrics()"
+                    >
+                        📋 Copy
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        onclick="downloadLyrics()"
+                    >
+                        ⬇ Download
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Lyrics -->
+
+            <div
+                id="lyrics"
+                class="lyrics"
+            >
+            </div>
+
+
+            <!-- Generate Again -->
+
+            <button
+                class="regenerate-button"
+                onclick="generateLyrics()"
+            >
+                🔄 Generate Another Version
+            </button>
+
+
+        </section>
+
+
+        <!-- Error -->
+
+        <div
+            id="error"
+            class="error"
+        >
+        </div>
+
+
+        <!-- Footer -->
+
+        <footer>
+
+            <p>
+                Powered by Qwen 2.5 3B • Running locally
+            </p>
+
+        </footer>
+
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
